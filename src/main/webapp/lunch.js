@@ -20,6 +20,10 @@ restaurants[restaurants.length] = (new Restaurant("purkynka", "Purkyňka", "Purk
 restaurants[restaurants.length] = (new Restaurant("opice", "U Tří Opic", "Opice #menu>p:not(.dots,#menuTyden)"));
 restaurants[restaurants.length] = (new Restaurant("kotelna", "U Kotelny", "Kotelna .tmi-group"));
 
+function isTouchDevice() {
+	return ('ontouchstart' in document.documentElement);
+}
+
 function getRestaurant(id) {
 	for (var restaurant of restaurants) {
 		if (restaurant.id == id) {

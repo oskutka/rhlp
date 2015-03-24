@@ -3,6 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="content-language" content="cs" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Red Hat Lunch Process Helper</title>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
@@ -14,8 +15,10 @@
 <script	src="lunch.js"></script>
 <script>
 	$(document).ready(function() {
-		
-        $("#menus").sortable();
+		if (!isTouchDevice()) {
+			// Doesn't play well. TODO make it more mobile friendly
+        	$("#menus").sortable();
+		}
         // set up an event listener to store the order to the local storage after a change in the order
         $("#menus").on("sortbeforestop", function( event, ui ) {
             restaurantOrder = $("#menus > div > div > div");
