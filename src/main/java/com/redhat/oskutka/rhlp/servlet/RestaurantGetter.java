@@ -5,26 +5,25 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.lang.ref.SoftReference;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
+import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public abstract class RestaurantGetter extends HttpServlet
-{
+public abstract class RestaurantGetter extends HttpServlet {
     private static final long serialVersionUID = -35835583774554291L;
+	private static final long CACHE_TIMEOUT = 60*60*1000; // in milis
+    protected SoftReference<String> menuHtml;
+    protected Date timeOfRetrieval;
 
-    public RestaurantGetter()
-    {
-        super();
-    }
+    protected abstract String getUrl();
 
-    private void doGetAndPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
+    private void doGetAndPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter writer = response.getWriter();
         try {
@@ -34,52 +33,50 @@ public abstract class RestaurantGetter extends HttpServlet
         }
     }
 
-    protected abstract String getUrl();
+    protected String getMenuHTML() {
+    	if (isOldCache()) {
+    		if (menuHtml != null) {
+    			menuHtml.clear();
+    		}
+    		menuHtml = new SoftReference<String>(getFreshMenuHTML());
+    		timeOfRetrieval = new Date();
+    	}
+		return menuHtml.get();
+	}
 
-    private String getMenuHTML()
-    {
+	protected boolean isOldCache() {
+		if (timeOfRetrieval == null) {
+			return true;
+		}
+		Date now = new Date();
+		return (now.getTime() - timeOfRetrieval.getTime() >= CACHE_TIMEOUT);
+	}
+
+	protected String getFreshMenuHTML() {
         StringBuffer sb = new StringBuffer();
         try
         {
             URL url = new URL(getUrl());
-            URLConnection con = url.openConnection();
-            try {
-                con.setRequestProperty("User-Agent", "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.74 Safari/537.36 OPR/28.0.1750.36 (Edition beta)");
-            	BufferedReader is = new BufferedReader(new InputStreamReader((InputStream) con.getContent()));
-            	String line;
-            	while ((line = is.readLine()) != null) {
-            		sb.append(line);
-            	}
-            } finally {
-            	// TODO close connection?
+            BufferedReader is = new BufferedReader(new InputStreamReader((InputStream) url.getContent()));
+            String line;
+            while ((line = is.readLine()) != null) {
+            	sb.append(line);
             }
         }
-        catch (MalformedURLException e)
-        {
-            // TODO Auto-generated catch block
+        catch (MalformedURLException e) {
             e.printStackTrace();
         }
-        catch (IOException e)
-        {
-            // TODO Auto-generated catch block
+        catch (IOException e) {
             e.printStackTrace();
         }
         return sb.toString();
     }
 
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	doGetAndPost(request, response);
     }
 
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-    {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGetAndPost(request, response);
     }
 
