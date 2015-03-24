@@ -26,8 +26,11 @@ public abstract class RestaurantGetter extends HttpServlet
     private void doGetAndPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter writer = response.getWriter()) {
+        PrintWriter writer = response.getWriter();
+        try {
             writer.println(getMenuHTML());
+        } finally {
+        	writer.close();
         }
     }
 
