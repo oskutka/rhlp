@@ -54,12 +54,16 @@ function isLocalStorageOk() {
 	storageOk = true;
 	for (var i = 0; i < restaurants.length; i++) {
 		isStored = false;
+		hasOrder = false;
 		for (var j = 0; j < restaurants.length; j++) {
 			if (localStorage["cz.redhat.oskutka.rhlp.order." + i + ".id"] == restaurants[j].id) {
 				isStored = true;
 			};
+			if (localStorage["cz.redhat.oskutka.rhlp.order." + j + ".id"] == restaurants[i].id) {
+				hasOrder = true;
+			};
 		};
-		if (!isStored) {
+		if (!isStored || !hasOrder) {
 			storageOk = false;
 		};
 	}
