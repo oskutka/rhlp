@@ -12,13 +12,28 @@ function Restaurant(id, name, url, collapsed){
 
 dayOfWeek = new Date().getDay();
 
+// TODO this really cannot be any prettier?
+function createRangeSelector(prefix, begin, end) {
+	var cssSelector = "";
+	for (var i = begin; i <= end ; i++) {
+		if (i > begin) {
+			cssSelector += ", ";
+		}
+		cssSelector += prefix + ":nth-child(" + i + ")";
+	}
+	return cssSelector;
+}
+
 var restaurants = new Array();
 restaurants[restaurants.length] = (new Restaurant("kanas_restaurace", "Kanas - Restaurace", "Kanas #tab1"));
 restaurants[restaurants.length] = (new Restaurant("kanas_jidelna", "Kanas - Jídelna", "Kanas #tab2"));
 restaurants[restaurants.length] = (new Restaurant("paladeo", "Paladeo", "Paladeo ul:nth-of-type(" + dayOfWeek + ")"));
-restaurants[restaurants.length] = (new Restaurant("purkynka", "Purkyňka", "Purkynka .moz-text-html div:nth-child(" + (1+(dayOfWeek-1)*6) + "),.moz-text-html div:nth-child(" + (2+(dayOfWeek-1)*6) + "),.moz-text-html div:nth-child(" + (3+(dayOfWeek-1)*6) + "),.moz-text-html div:nth-child(" + (4+(dayOfWeek-1)*6) + "),.moz-text-html div:nth-child(" + (5+(dayOfWeek-1)*6) + ")"));
-restaurants[restaurants.length] = (new Restaurant("opice", "U Tří Opic", "Opice #menu>p:not(.dots,#menuTyden)"));
+restaurants[restaurants.length] = (new Restaurant("purkynka", "Purkyňka", "Purkynka " + createRangeSelector(".moz-text-html div", (1+(dayOfWeek-1)*6),  (5+(dayOfWeek-1)*6) )));
+restaurants[restaurants.length] = (new Restaurant("opice", "U 3 Opic", "Opice #menu>p:not(.dots,#menuTyden)"));
+restaurants[restaurants.length] = (new Restaurant("sporthotel", "A-Sport Hotel", "Sporthotel " + createRangeSelector("table.tmaint tr", ((dayOfWeek-1)*8 + 2), (dayOfWeek)*8)));
 restaurants[restaurants.length] = (new Restaurant("kotelna", "U Kotelny", "Kotelna .tmi-group"));
+restaurants[restaurants.length] = (new Restaurant("prometheus", "Prometheus", "Prometheus div.panel table:nth-of-type(" + (dayOfWeek+1) + ")"));
+restaurants[restaurants.length] = (new Restaurant("vista", "Hotel Vista", "Vista .tmi-group"));
 
 function isTouchDevice() {
 	return ('ontouchstart' in document.documentElement);

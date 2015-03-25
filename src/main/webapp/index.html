@@ -16,17 +16,18 @@
 <script>
 	$(document).ready(function() {
 		if (!isTouchDevice()) {
-			// Doesn't play well. TODO make it more mobile friendly
+			// Doesn't play well with touch devices. TODO make it more mobile friendly
         	$("#menus").sortable();
-		}
-        // set up an event listener to store the order to the local storage after a change in the order
-        $("#menus").on("sortbeforestop", function( event, ui ) {
-            restaurantOrder = $("#menus > div > div > div");
-            for (var i = 0; i < restaurantOrder.length; i++) {
-            	localStorage["cz.redhat.oskutka.rhlp.order." + i + ".id"] = restaurantOrder[i].id;
-            }
-            
-        } );
+
+            // set up an event listener to store the order to the local storage after a change in the order
+            $("#menus").on("sortbeforestop", function( event, ui ) {
+                restaurantOrder = $("#menus > div > div > div");
+                for (var i = 0; i < restaurantOrder.length; i++) {
+                	localStorage["cz.redhat.oskutka.rhlp.order." + i + ".id"] = restaurantOrder[i].id;
+                }
+                
+            } );
+    	}
 
 		// load menus of all the restaurant 
         for (var restaurant of restaurants) {
