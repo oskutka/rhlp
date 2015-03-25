@@ -25,8 +25,8 @@ function createRangeSelector(prefix, begin, end) {
 }
 
 var restaurants = new Array();
-restaurants[restaurants.length] = (new Restaurant("kanas_restaurace", "Kanas - Restaurace", "Kanas #tab1"));
-restaurants[restaurants.length] = (new Restaurant("kanas_jidelna", "Kanas - Jídelna", "Kanas #tab2"));
+restaurants[restaurants.length] = (new Restaurant("kanas_restaurace", "Kanas - Restaurace", "Kanas #tab1 *:nth-child(n+2)"));
+restaurants[restaurants.length] = (new Restaurant("kanas_jidelna", "Kanas - Jídelna", "Kanas #tab2 *:nth-child(n+2)"));
 restaurants[restaurants.length] = (new Restaurant("paladeo", "Paladeo", "Paladeo ul:nth-of-type(" + dayOfWeek + ")"));
 restaurants[restaurants.length] = (new Restaurant("purkynka", "Purkyňka", "Purkynka " + createRangeSelector(".moz-text-html div", (1+(dayOfWeek-1)*6),  (5+(dayOfWeek-1)*6) )));
 restaurants[restaurants.length] = (new Restaurant("opice", "U 3 Opic", "Opice #menu>p:not(.dots,#menuTyden)"));
