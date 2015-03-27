@@ -1,74 +1,77 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="content-language" content="cs" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Red Hat Lunch Process Helper</title>
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
-<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="content-language" content="cs" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>Red Hat Lunch Process Helper</title>
+		<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css" />
+		<link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+			
+		<script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+		<script	src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<script	src="lunch.js"></script>
+		<script>
+			$(document).ready(function() {
+				if (!isTouchDevice()) {
+					// Doesn't play well with touch devices. TODO make it more mobile friendly
+					$("#menus").sortable();
+		
+					// set up an event listener to store the order to the local storage after a change in the order
+					$("#menus").on("sortbeforestop", function( event, ui ) {
+						restaurantOrder = $("#menus > div > div > div");
+						for (var i = 0; i < restaurantOrder.length; i++) {
+							localStorage["cz.redhat.oskutka.rhlp.order." + i + ".id"] = restaurantOrder[i].id;
+						}
+					} );
+					// change the icons (from plus/minus) to bars to hint the user that it's draggable
+					$("#menus > div").collapsible( "option", "collapsedIcon", "bars" );
+					$("#menus > div").collapsible( "option", "expandedIcon", "bars" );
+				}
+		
+				// load menus of all the restaurant
+				for (var restaurant of restaurants) {
+					$('div#' + restaurant.id).load(restaurant.url);
+				}
+				$( ".selector" ).collapsibleset( "option", "collapsedIcon", "arrow-r" );
+			});
+			checkLocalStorage();
+		</script>
+	</head>
+	<body>
+		<div data-role="page" id="pageone">
+			<div data-role="header">
+				<h1>Red Hat Lunch Process Helper</h1>
+			</div>
+			<div data-role="main" class="ui-content">
+				<div id="menus">
+					<script>
+						for (var i = 0; i < restaurants.length; i++) {
+							myRestaurant = getRestaurant(localStorage["cz.redhat.oskutka.rhlp.order." + i + ".id"]);
+							newDiv = $('<div data-role="collapsible" data-collapsed="' + myRestaurant.isCollapsed() + '">').appendTo("#menus");
+							newDiv.append($("<h2>"+myRestaurant.name+"</h2>"));
+							newDiv.append($("<div id=\"" + myRestaurant.id + "\"/>"));
+							newDiv.on("collapsiblecollapse", function( event, ui ) {
+								localStorage["cz.redhat.oskutka.rhlp." + event.target.lastChild.firstChild.id + ".collapsed"] = true;
+							});
+							newDiv.on("collapsibleexpand", function( event, ui ) {
+								localStorage["cz.redhat.oskutka.rhlp." + event.target.lastChild.firstChild.id + ".collapsed"] = false;
+							});
+						}
+					</script>
+				</div>
 	
-<script	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
-<script	src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-<script	src="lunch.js"></script>
-<script>
-	$(document).ready(function() {
-		if (!isTouchDevice()) {
-			// Doesn't play well with touch devices. TODO make it more mobile friendly
-        	$("#menus").sortable();
-
-            // set up an event listener to store the order to the local storage after a change in the order
-            $("#menus").on("sortbeforestop", function( event, ui ) {
-                restaurantOrder = $("#menus > div > div > div");
-                for (var i = 0; i < restaurantOrder.length; i++) {
-                	localStorage["cz.redhat.oskutka.rhlp.order." + i + ".id"] = restaurantOrder[i].id;
-                }
-                
-            } );
-    	}
-
-		// load menus of all the restaurant 
-        for (var restaurant of restaurants) {
-            $('div#' + restaurant.id).load(restaurant.url);            
-        }
-	});
-	checkLocalStorage();
-  </script>
-</head>
-<body>
-	<div data-role="page" id="pageone">
-		<div data-role="header">
-			<h1>Red Hat Lunch Process Helper</h1>
-		</div>
-		<div data-role="main" class="ui-content">
-			<div id="menus">
 				<script>
-					for (var i = 0; i < restaurants.length; i++) {
-						myRestaurant = getRestaurant(localStorage["cz.redhat.oskutka.rhlp.order." + i + ".id"]);
-		        		newDiv = $('<div data-role="collapsible" data-collapsed="' + myRestaurant.isCollapsed() + '" data-content-theme="c">').appendTo("#menus");
-		            	newDiv.append($("<h2>"+myRestaurant.name+"</h2>"));
-		            	newDiv.append($("<div id=\"" + myRestaurant.id + "\"/>"));
-		            	newDiv.on("collapsiblecollapse", function( event, ui ) {
-		            		localStorage["cz.redhat.oskutka.rhlp." + event.target.lastChild.firstChild.id + ".collapsed"] = true;
-		            	});
-		            	newDiv.on("collapsibleexpand", function( event, ui ) {
-		          		  		localStorage["cz.redhat.oskutka.rhlp." + event.target.lastChild.firstChild.id + ".collapsed"] = false;
-		       		 	});
-					}
+					
 				</script>
 			</div>
-
-			<script>
-				
-			</script>
+			<div data-role="footer">
+				<h1>Enjoy your meal!</h1>
+			</div>
 		</div>
-		<div data-role="footer">
-			<h1>Enjoy your meal!</h1>
-		</div>
-	</div>
-</body>
+	</body>
 
 
 </html>

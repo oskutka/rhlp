@@ -5,7 +5,7 @@ function Restaurant(id, name, url, collapsed){
 	this.url = url;
 	this.collapsed = collapsed;
 	this.isCollapsed = function() {
-		return (localStorage["cz.redhat.oskutka.rhlp." + this.id + ".collapsed"] == "true");
+		return (localStorage["cz.redhat.oskutka.rhlp." + this.id + ".collapsed"] != "false");
 	};
 
 };
