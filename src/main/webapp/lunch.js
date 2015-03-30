@@ -34,6 +34,7 @@ restaurants[restaurants.length] = (new Restaurant("sporthotel", "A-Sport Hotel",
 restaurants[restaurants.length] = (new Restaurant("kotelna", "U Kotelny", "Kotelna .tmi-group"));
 restaurants[restaurants.length] = (new Restaurant("prometheus", "Prometheus", "Prometheus div.panel table:nth-of-type(" + (dayOfWeek+1) + ")"));
 restaurants[restaurants.length] = (new Restaurant("vista", "Hotel Vista", "Vista .tmi-group"));
+restaurants[restaurants.length] = (new Restaurant("menza", "Menza Purkyňova", "Menza #m10"));
 
 function isTouchDevice() {
 	return ('ontouchstart' in document.documentElement);
