@@ -52,7 +52,7 @@ function getRestaurant(id) {
 
 function isLocalStorageOk() {
 	storageOk = true;
-	for (var i = 0; i < restaurants.length; i++) {
+	for (var i = 0; i < restaurants.length && storageOk; i++) {
 		isStored = false;
 		hasOrder = false;
 		for (var j = 0; j < restaurants.length; j++) {
