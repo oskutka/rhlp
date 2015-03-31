@@ -34,7 +34,7 @@ public abstract class RestaurantGetter extends HttpServlet {
     }
 
     protected String getMenuHTML() {
-    	if (isOldCache()) {
+    	if (isOldCache() || menuHtml == null || menuHtml.get() == null) {
     		if (menuHtml != null) {
     			menuHtml.clear();
     		}
