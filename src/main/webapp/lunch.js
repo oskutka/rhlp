@@ -41,7 +41,8 @@ function isTouchDevice() {
 }
 
 function getRestaurant(id) {
-	for (var restaurant of restaurants) {
+	for (var i = 0 ; i < restaurants.length; i++) {
+		var restaurant = restaurants[i];
 		if (restaurant.id == id) {
 			return restaurant;
 		};

@@ -31,7 +31,8 @@
 				}
 		
 				// load menus of all the restaurant
-				for (var restaurant of restaurants) {
+				for (var i = 0 ; i < restaurants.length; i++) {
+					var restaurant = restaurants[i];
 					$('div#' + restaurant.id).load(restaurant.url);
 				}
 			});
