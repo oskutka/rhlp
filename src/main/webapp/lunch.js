@@ -32,7 +32,7 @@ restaurants[restaurants.length] = (new Restaurant("purkynka", "Purkyňka", "Purk
 restaurants[restaurants.length] = (new Restaurant("opice", "U 3 Opic", "Opice #menu>p:not(.dots,#menuTyden)"));
 restaurants[restaurants.length] = (new Restaurant("sporthotel", "A-Sport Hotel", "Sporthotel " + createRangeSelector("table.tmaint tr", ((dayOfWeek-1)*6 + 2), (dayOfWeek)*6)));
 restaurants[restaurants.length] = (new Restaurant("kotelna", "U Kotelny", "Kotelna .tmi-group"));
-restaurants[restaurants.length] = (new Restaurant("prometheus", "Prometheus", "Prometheus div.panel table:nth-of-type(" + (dayOfWeek+1) + ")"));
+restaurants[restaurants.length] = (new Restaurant("prometheus", "Prometheus", "Prometheus #den-" + dayOfWeek));
 restaurants[restaurants.length] = (new Restaurant("vista", "Hotel Vista", "Vista .tmi-group"));
 restaurants[restaurants.length] = (new Restaurant("menza", "Menza Purkyňova", "Menza #m10"));
 
