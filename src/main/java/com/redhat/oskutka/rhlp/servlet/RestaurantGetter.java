@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 public abstract class RestaurantGetter extends HttpServlet {
     private static final long serialVersionUID = -35835583774554291L;
-	private static final long CACHE_TIMEOUT = 60*60*1000; // in milis
+	private static final long CACHE_TIMEOUT = 5*60*1000; // in milis
     protected SoftReference<String> menuHtml;
     protected Date timeOfRetrieval;
 
