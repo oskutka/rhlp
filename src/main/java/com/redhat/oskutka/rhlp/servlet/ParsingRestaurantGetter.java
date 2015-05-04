@@ -12,16 +12,16 @@ public abstract class ParsingRestaurantGetter extends RestaurantGetter {
 	protected String parseHTML(String freshMenuHTML) {
 		return freshMenuHTML;
 	}
-	static protected String[] getDays() {
+	protected String[] getDays() {
 		return new String[]{"Pondělí", "Úterý", "Středa", "Čtvrtek", "Pátek", "Sobota", "Neděle"};
 	}
-	static protected String getToday() {
+	protected String getToday() {
 		int dayOfWeek = new Date().getDay() - 1;
-		return getDays()[dayOfWeek > 4 ? 5 : dayOfWeek];
+		return getDays()[dayOfWeek > 4 ? 4 : dayOfWeek];
 	}
-	static protected String getTomorrow() {
+	protected String getTomorrow() {
 		int dayOfWeek = new Date().getDay();
-		return getDays()[dayOfWeek > 5 ? 6 : dayOfWeek];
+		return getDays()[dayOfWeek > 5 ? 5 : dayOfWeek];
 	}
 	
 	@Override

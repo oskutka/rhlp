@@ -13,7 +13,8 @@ public class Sporthotel extends ParsingRestaurantGetter {
         return "http://www.a-sporthotel.cz/menu/";
     }
 
-	static protected String[] getDays() {
+	@Override
+	protected String[] getDays() {
 		return new String[]{"Pondělí", "Úterý", "Středa", "Čtvrtek", "Pátek", "RIGHT"};
 	}
 	

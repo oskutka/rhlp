@@ -12,9 +12,26 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class Purkynka
  */
 @WebServlet("/Purkynka")
-public class Purkynka extends RestaurantGetter {
-    private static final long serialVersionUID = 7226051113762646793L;
+public class Purkynka extends ParsingRestaurantGetter {
+	private static final long serialVersionUID = 1520663750240248873L;
 
-    protected String getUrl() {
-        return "http://www.napurkynce.cz/denni-menu/";
-    }}
+	protected String getUrl() {
+    	return "http://www.napurkynce.cz/denni-menu/";
+	}
+
+	@Override
+	protected String[] getDays() {
+		return new String[]{"PONDĚLÍ", "ÚTERÝ", "STŘEDA", "ČTVRTEK", "PÁTEK", "NEDĚLE"};
+	}
+	
+	@Override
+	protected String parseHTML(String freshMenuHTML) {
+		String result = super.parseHTML(freshMenuHTML);
+		int todayIndex = result.lastIndexOf("<div>",result.indexOf(getToday()));
+		int tomorrowIndex = result.lastIndexOf("<div>", result.indexOf(getTomorrow())) + "<div>".length();
+		result = result.substring(todayIndex, tomorrowIndex);
+		return result;
+	}
+
+}
+
