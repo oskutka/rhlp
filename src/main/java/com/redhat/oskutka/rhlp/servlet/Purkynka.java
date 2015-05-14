@@ -28,7 +28,7 @@ public class Purkynka extends ParsingRestaurantGetter {
 	protected String parseHTML(String freshMenuHTML) {
 		String result = super.parseHTML(freshMenuHTML);
 		int todayIndex = result.lastIndexOf("<div>",result.indexOf(getToday()));
-		int tomorrowIndex = result.lastIndexOf("<div>", result.indexOf(getTomorrow())) + "<div>".length();
+		int tomorrowIndex = result.lastIndexOf("</div>", result.indexOf(getTomorrow())) + "</div>".length();
 		result = result.substring(todayIndex, tomorrowIndex);
 		return result;
 	}
