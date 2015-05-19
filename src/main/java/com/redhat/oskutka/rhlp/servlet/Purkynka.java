@@ -1,12 +1,7 @@
 package com.redhat.oskutka.rhlp.servlet;
 
-import java.io.IOException;
-
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+
 
 /**
  * Servlet implementation class Purkynka
@@ -20,18 +15,8 @@ public class Purkynka extends ParsingRestaurantGetter {
 	}
 
 	@Override
-	protected String[] getDays() {
-		return new String[]{"PONDĚLÍ", "ÚTERÝ", "STŘEDA", "ČTVRTEK", "PÁTEK", "NEDĚLE"};
-	}
-	
-	@Override
-	protected String parseHTML(String freshMenuHTML) {
-		String result = super.parseHTML(freshMenuHTML);
-		int todayIndex = result.lastIndexOf("<div>",result.indexOf(getToday()));
-		int tomorrowIndex = result.lastIndexOf("</div>", result.indexOf(getTomorrow())) + "</div>".length();
-		result = result.substring(todayIndex, tomorrowIndex);
-		return result;
+	protected boolean includingDayName() {
+		return true;
 	}
 
 }
-
