@@ -1,3 +1,3 @@
-The OpenShift `jbossas` cartridge documentation can be found at:
+Daily menu offerings for restaurants near the Brno Red Hat office.
 
-http://openshift.github.io/documentation/oo_cartridge_guide.html#jbossas
+You can find a staged instance at http://rhlp-oskutka.rhcloud.com
