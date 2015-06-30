@@ -5,3 +5,12 @@
 #myfood a {
     display: none;
 }
+
+
+#rebio li div :nth-child(n+2) {
+	display: none;
+}
+
+#rebio strong {
+	font-weight: normal;
+}
