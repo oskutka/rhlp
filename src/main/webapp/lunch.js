@@ -38,6 +38,7 @@ restaurants[restaurants.length] = (new Restaurant("menza", "Menza Purkyňova", "
 restaurants[restaurants.length] = (new Restaurant("velorex", "Velorex", "Velorex #denniNabidka > :nth-child(n+2) "));
 restaurants[restaurants.length] = (new Restaurant("myfood", "My Food Truck", "Myfood #dailyMenu"));
 restaurants[restaurants.length] = (new Restaurant("rebio", "Rebio", "Rebio"));
+restaurants[restaurants.length] = (new Restaurant("vaclav", "Vaclav", "Vaclav .content table:first-of-type"));
 
 function isTouchDevice() {
 	return ('ontouchstart' in document.documentElement);
