@@ -57,7 +57,7 @@ public abstract class RestaurantGetter extends HttpServlet {
         try
         {
             URL url = new URL(getUrl());
-            BufferedReader is = new BufferedReader(new InputStreamReader((InputStream) url.getContent()));
+            BufferedReader is = new BufferedReader(new InputStreamReader((InputStream) url.getContent(), getCharset()));
             String line;
             while ((line = is.readLine()) != null) {
             	sb.append(line);
@@ -72,12 +72,16 @@ public abstract class RestaurantGetter extends HttpServlet {
         return sb.toString();
     }
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	doGetAndPost(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGetAndPost(request, response);
     }
+
+    protected String getCharset() {
+		return "UTF-8";
+	}
 
 }

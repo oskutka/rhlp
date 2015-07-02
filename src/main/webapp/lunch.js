@@ -39,6 +39,7 @@ restaurants[restaurants.length] = (new Restaurant("velorex", "Velorex", "Velorex
 restaurants[restaurants.length] = (new Restaurant("myfood", "My Food Truck", "Myfood #dailyMenu"));
 restaurants[restaurants.length] = (new Restaurant("rebio", "Rebio", "Rebio"));
 restaurants[restaurants.length] = (new Restaurant("vaclav", "Vaclav", "Vaclav .content table:first-of-type"));
+restaurants[restaurants.length] = (new Restaurant("semilasso", "Semilasso", "Semilasso"));
 
 function isTouchDevice() {
 	return ('ontouchstart' in document.documentElement);

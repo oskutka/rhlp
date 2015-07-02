@@ -13,3 +13,11 @@
 #vaclav b {
 	font-weight: inherit;
 }
+
+#semilasso table {
+	width: 100%;
+}
+
+#semilasso table * {
+	font-size: initial;
+}
