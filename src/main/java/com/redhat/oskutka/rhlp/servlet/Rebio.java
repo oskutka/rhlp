@@ -19,7 +19,7 @@ public class Rebio extends ParsingRestaurantGetter {
 	private static final long serialVersionUID = 3901775532572221827L;
 
 	protected String getUrl() {
-		return "http://www.rebio.cz/Rebio-Park/Nase-nabidka/Jidelni-listek-Rebio-Park/2897.file.ashx";
+		return "http://www.rebio.cz/Rebio-Park/Nase-nabidka/Jidelni-listek-Rebio-Park/2899.file.ashx"; // FIXME get the URL from http://www.rebio.cz/Rebio-Park/Nase-nabidka/gn-ha.folder.aspx
 	}
 
 	protected String[] getDays() {
