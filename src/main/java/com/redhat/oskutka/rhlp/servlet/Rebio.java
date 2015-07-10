@@ -1,7 +1,9 @@
 package com.redhat.oskutka.rhlp.servlet;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -19,7 +21,25 @@ public class Rebio extends ParsingRestaurantGetter {
 	private static final long serialVersionUID = 3901775532572221827L;
 
 	protected String getUrl() {
-		return "http://www.rebio.cz/Rebio-Park/Nase-nabidka/Jidelni-listek-Rebio-Park/2899.file.ashx"; // FIXME get the URL from http://www.rebio.cz/Rebio-Park/Nase-nabidka/gn-ha.folder.aspx
+		String pdfUrl = "";
+		try {
+			URL pageUrl = new URL("http://www.rebio.cz/Rebio-Park/Nase-nabidka/gn-ha.folder.aspx");
+			BufferedReader is = new BufferedReader(new InputStreamReader((InputStream) pageUrl.getContent(), getCharset()));
+			String line;
+			while ((line = is.readLine()) != null) {
+				if (line.contains("Jídelní lístek Rebio Park")) {
+					pdfUrl = "http://www.rebio.cz/Rebio-Park/Nase-nabidka/Jidelni-listek-Rebio-Park/" + line.replaceAll(".*href=\"([^\"]*)\".*", "$1");
+					break;
+				}
+			}
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+
+		return pdfUrl;
 	}
 
 	protected String[] getDays() {
