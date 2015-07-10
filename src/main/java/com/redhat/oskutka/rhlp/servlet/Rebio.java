@@ -23,7 +23,7 @@ public class Rebio extends ParsingRestaurantGetter {
 	}
 
 	protected String[] getDays() {
-		return new String[]{"Pondělí", "Úterý", "Středa", "Čtvrtek", "Pátek", "Přijímáme objednávky", "Neděle"};
+		return new String[]{"Pondělí", "Úterý", "Středa", "Čtvrtek", "Pátek", "Informace o alergenech", "Neděle"};
 	}
 
 	protected String getDayOpeningTag() {
