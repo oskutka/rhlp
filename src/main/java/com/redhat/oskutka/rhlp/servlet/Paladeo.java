@@ -12,20 +12,5 @@ public class Paladeo extends ParsingRestaurantGetter {
 	protected String getUrl() {
         return "http://www.paladeo.cz/menu";
     }
-	
-	@Override
-	protected String getDayOpeningTag() {
-		return "<ul>";
-	}
-
-	@Override
-	protected String getDayClosingTag() {
-		return "</ul>";
-	}
-	
-	@Override
-	protected int getEndIndex(String result) {
-		return result.indexOf(getDayClosingTag(), getTodayIndex(result)) + getDayClosingTag().length();
-	}
 
 }
