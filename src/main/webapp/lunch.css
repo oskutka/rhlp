@@ -1,3 +1,13 @@
+/* General styles */
+
+.ui-footer p {
+	font-size: small;
+	font-weight: normal;
+	text-align: center;
+}
+
+/* Restaurant specific styles */
+
 #myfood form {
     display:none;
 }
