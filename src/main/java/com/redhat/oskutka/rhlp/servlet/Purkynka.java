@@ -19,4 +19,13 @@ public class Purkynka extends ParsingRestaurantGetter {
 		return true;
 	}
 
+	@Override
+	protected String getDayOpeningTag() {
+		return "";
+	}
+
+	@Override
+	protected String getDayClosingTag() {
+		return "";
+	}
 }
