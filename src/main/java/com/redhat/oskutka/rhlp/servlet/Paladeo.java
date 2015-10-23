@@ -13,4 +13,8 @@ public class Paladeo extends ParsingRestaurantGetter {
         return "http://www.paladeo.cz/menu";
     }
 
+	@Override
+	protected String[] getDays() {
+		return new String[]{"Pondělí", "Úterý", "Středa", "Čtvrtek", "Pátek", "K obědu"};
+	}	
 }

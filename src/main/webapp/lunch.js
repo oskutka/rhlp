@@ -27,7 +27,7 @@ function createRangeSelector(prefix, begin, end) {
 var restaurants = new Array();
 restaurants[restaurants.length] = (new Restaurant("kanas_restaurace", "Kanas - Restaurace", "Kanas #tab1 *:nth-child(n+2)"));
 restaurants[restaurants.length] = (new Restaurant("kanas_jidelna", "Kanas - Jídelna", "Kanas #tab2 *:nth-child(n+2)"));
-restaurants[restaurants.length] = (new Restaurant("paladeo", "Paladeo", "Paladeo"));
+restaurants[restaurants.length] = (new Restaurant("paladeo", "Paladeo", "Paladeo div:nth-child(2)"));
 restaurants[restaurants.length] = (new Restaurant("purkynka", "Purkyňka", "Purkynka"));
 restaurants[restaurants.length] = (new Restaurant("opice", "U 3 Opic", "Opice #menu>p:not(.dots,#menuTyden)"));
 restaurants[restaurants.length] = (new Restaurant("sporthotel", "A-Sport Hotel", "Sporthotel"));
