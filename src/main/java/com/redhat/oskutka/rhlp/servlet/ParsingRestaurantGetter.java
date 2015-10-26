@@ -60,8 +60,12 @@ public abstract class ParsingRestaurantGetter extends RestaurantGetter {
 		return new String[]{"Pondělí", "Úterý", "Středa", "Čtvrtek", "Pátek", "Sobota", "Neděle"};
 	}
 	
+	protected int getDayOfWeek() {
+		return new Date().getDay() - 1;
+	}
+	
 	protected String getToday() {
-		int dayOfWeek = new Date().getDay() - 1;
+		int dayOfWeek = getDayOfWeek();
 		return getDays()[dayOfWeek > 4 ? 4 : dayOfWeek];
 	}
 	
@@ -70,7 +74,7 @@ public abstract class ParsingRestaurantGetter extends RestaurantGetter {
 	}
 	
 	protected String getTomorrow() {
-		int dayOfWeek = new Date().getDay();
+		int dayOfWeek = getDayOfWeek() + 1;
 		return getDays()[dayOfWeek > 5 ? 5 : dayOfWeek];
 	}
 	
