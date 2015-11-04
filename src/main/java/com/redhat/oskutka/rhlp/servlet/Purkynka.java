@@ -13,15 +13,20 @@ public class Purkynka extends ParsingRestaurantGetter {
 	protected String getUrl() {
     	return "http://www.napurkynce.cz/denni-menu/";
 	}
-
-	@Override
-	protected String[] getDays() {
-		return new String[]{"Pondělí", "Úterý", "Středa", "Čtvrtek", "Pátek", "Akce", "Neděle"};
-	}
 	
 	@Override
 	protected boolean includingDayName() {
 		return true;
+	}
+
+	@Override
+	protected String getDayOpeningTag() {
+		return "<br />";
+	}
+	
+	@Override
+	protected String getDayClosingTag() {
+		return "<br />";
 	}
 
 }
