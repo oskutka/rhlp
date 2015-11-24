@@ -24,35 +24,32 @@ function createRangeSelector(prefix, begin, end) {
 	return cssSelector;
 }
 
-var restaurants = new Array();
-restaurants[restaurants.length] = (new Restaurant("kanas_restaurace", "Kanas - Restaurace", "Kanas #tab1 *:nth-child(n+2)"));
-restaurants[restaurants.length] = (new Restaurant("kanas_jidelna", "Kanas - Jídelna", "Kanas #tab2 *:nth-child(n+2)"));
-restaurants[restaurants.length] = (new Restaurant("paladeo", "Paladeo", "Paladeo"));
-restaurants[restaurants.length] = (new Restaurant("purkynka", "Purkyňka", "Purkynka"));
-restaurants[restaurants.length] = (new Restaurant("opice", "U 3 Opic", "Opice #menu>p:not(.dots,#menuTyden)"));
-restaurants[restaurants.length] = (new Restaurant("sporthotel", "A-Sport Hotel", "Sporthotel"));
-restaurants[restaurants.length] = (new Restaurant("kotelna", "U Kotelny", "Kotelna .tmi-group"));
-restaurants[restaurants.length] = (new Restaurant("prometheus", "Prometheus", "Prometheus #den-" + dayOfWeek));
-restaurants[restaurants.length] = (new Restaurant("vista", "Hotel Vista", "Vista .tmi-group"));
-restaurants[restaurants.length] = (new Restaurant("menza", "Menza Purkyňova", "Menza #m10"));
-restaurants[restaurants.length] = (new Restaurant("velorex", "Velorex", "Velorex #denniNabidka > :nth-child(n+2) "));
-//restaurants[restaurants.length] = (new Restaurant("myfood", "My Food Truck", "Myfood #dailyMenu"));
-restaurants[restaurants.length] = (new Restaurant("rebio", "Rebio", "Rebio"));
-restaurants[restaurants.length] = (new Restaurant("vaclav", "Vaclav", "Vaclav .content table:first-of-type"));
-restaurants[restaurants.length] = (new Restaurant("semilasso", "Semilasso", "Semilasso"));
+var restaurants = [
+	["kanas_restaurace", "Kanas - Restaurace", "Kanas #tab1 *:nth-child(n+2)"],
+	["kanas_jidelna", "Kanas - Jídelna", "Kanas #tab2 *:nth-child(n+2)"],
+	["paladeo", "Paladeo", "Paladeo"],
+	["purkynka", "Purkyňka", "Purkynka"],
+	["opice", "U 3 Opic", "Opice #menu>p:not(.dots,#menuTyden)"],
+	["sporthotel", "A-Sport Hotel", "Sporthotel"],
+	["kotelna", "U Kotelny", "Kotelna .tmi-group"],
+	["prometheus", "Prometheus", "Prometheus #den-" + dayOfWeek],
+	["vista", "Hotel Vista", "Vista .tmi-group"],
+	["menza", "Menza Purkyňova", "Menza #m10"],
+	["velorex", "Velorex", "Velorex #denniNabidka > :nth-child(n+2) "],
+	//["myfood", "My Food Truck", "Myfood #dailyMenu"],
+	["rebio", "Rebio", "Rebio"],
+	["vaclav", "Vaclav", "Vaclav .content table:first-of-type"],
+	["semilasso", "Semilasso", "Semilasso"],
+].map(function(data) {
+	return new Restaurant(data[0], data[1], data[2])
+})
 
 function isTouchDevice() {
 	return ('ontouchstart' in document.documentElement);
 }
 
 function getRestaurant(id) {
-	for (var i = 0 ; i < restaurants.length; i++) {
-		var restaurant = restaurants[i];
-		if (restaurant.id == id) {
-			return restaurant;
-		};
-	}
-	return null;
+	return restaurants.filter(function(restaurant) { return restaurant.id == id })[0] || null;
 	// TODO handle error
 }
 
