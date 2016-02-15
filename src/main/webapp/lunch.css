@@ -31,3 +31,16 @@
 #semilasso table * {
 	font-size: initial;
 }
+
+/* zomato */
+.right {
+    float: right;
+}
+
+.tmi-text-group {
+   float: left;
+}
+
+.clear {
+    clear: both;
+}

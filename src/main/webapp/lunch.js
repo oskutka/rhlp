@@ -41,6 +41,7 @@ var restaurants = [
 	["vaclav", "Vaclav", "Vaclav .content table:first-of-type"],
 	["semilasso", "Semilasso", "Semilasso"],
 	["welcome", "Welcome", "Welcome .et_pb_text_" + dayOfWeek + " tr:nth-child(n+2)"],
+	["bavorska", "Bavorská", "Bavorska"],
 ].map(function(data) {
 	return new Restaurant(data[0], data[1], data[2]);
 });

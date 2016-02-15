@@ -49,7 +49,7 @@ public abstract class ParsingRestaurantGetter extends RestaurantGetter {
 	}
 
 	protected String getDayOpeningTag() {
-		return "<div>";
+		return "<div";
 	}
 	
 	protected String getDayClosingTag() {
