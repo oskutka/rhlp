@@ -10,13 +10,24 @@ import javax.servlet.annotation.WebServlet;
 public class Nepal extends ParsingRestaurantGetter {
 	private static final long serialVersionUID = 7504818210814030684L;
 
+	@Override
 	protected String getUrl() {
 		return "http://nepalbrno.cz/weekly-menu/";
 	}
 
 	@Override
-	protected boolean includingDayName() {
-		return true;
+	protected String getDayOpeningTag() {
+		return "<tr>";
+	}
+	
+	@Override
+	protected String getDayClosingTag() {
+		return "</tr>";
+	}
+	
+	@Override
+	protected String[] getDays() {
+		return new String[]{"Monday--", "Tuesday--", "Wednesday--", "Thursday--", "Friday--", "nbsp", "Sunday"};
 	}
 
 }
