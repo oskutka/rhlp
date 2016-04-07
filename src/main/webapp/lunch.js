@@ -42,6 +42,7 @@ var restaurants = [
 	["semilasso", "Semilasso", "Semilasso"],
 	["welcome", "Welcome", "Welcome .et_pb_text_" + dayOfWeek + " tr:nth-child(n+2)"],
 	["bavorska", "Bavorská", "Bavorska"],
+	["nepal", "Nepal", "Nepal tr:nth-child(n+2)"],
 ].map(function(data) {
 	return new Restaurant(data[0], data[1], data[2]);
 });
