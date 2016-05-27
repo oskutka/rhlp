@@ -18,15 +18,18 @@
 			$(document).ready(function() {
 				if (!isTouchDevice()) {
 					// Doesn't play well with touch devices. TODO make it more mobile friendly
-					$("#menus").sortable();
-		
-					// set up an event listener to store the order to the local storage after a change in the order
-					$("#menus").on("sortbeforestop", function( event, ui ) {
-						restaurantOrder = $("#menus > div > div > div");
-						for (var i = 0; i < restaurantOrder.length; i++) {
-							localStorage["cz.redhat.oskutka.rhlp.order." + i + ".id"] = restaurantOrder[i].id;
+					$("#menus").sortable({
+						// only the title is the handle for sorting in order to be able to select the text below it
+						handle: '> h2',
+						// set up an event listener to store the order to the local storage after a change in the order
+						stop: function(event, ui) {
+							restaurantOrder = $("#menus > div > div > div");
+							for (var i = 0; i < restaurantOrder.length; i++) {
+								localStorage["cz.redhat.oskutka.rhlp.order." + i + ".id"] = restaurantOrder[i].id;
+							}
 						}
-					} );
+					});
+		
 					// change the icons (from plus/minus) to bars to hint the user that it's draggable
 					$("#menus > div").collapsible( "option", "collapsedIcon", "bars" );
 					$("#menus > div").collapsible( "option", "expandedIcon", "bars" );
