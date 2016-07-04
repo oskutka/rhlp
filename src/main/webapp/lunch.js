@@ -29,7 +29,7 @@ var restaurants = [
 	["kanas_jidelna", "Kanas - Jídelna", "Kanas #tab2 *:nth-child(n+2)"],
 	["paladeo", "Paladeo", "Paladeo"],
 	["purkynka", "Purkyňka", "Purkynka"],
-	["opice", "U 3 Opic", "Opice #menu>p:not(.dots,#menuTyden)"],
+	["opice", "U 3 Opic", "Opice"],
 	["sporthotel", "A-Sport Hotel", "Sporthotel"],
 	["kotelna", "U Kotelny", "Kotelna .tmi-group"],
 	["prometheus", "Prometheus", "Prometheus #den-" + dayOfWeek],
