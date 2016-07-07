@@ -32,6 +32,15 @@
 	font-size: initial;
 }
 
+#opice span.price {
+    float:right;
+}
+
+#opice h4 {
+    display:inline;
+    font-weight:normal;
+}
+
 /* zomato */
 .right {
     float: right;
