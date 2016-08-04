@@ -28,5 +28,17 @@ public class Sporthotel extends ParsingRestaurantGetter {
 	protected String getDayClosingTag() {
 		return "</tr>";
 	}
+	
+	
+	/* There are several "středa" and "čtvrtek" on the page. We need to get the first ones (not the last ones). */
+	@Override
+	protected int getTodayIndex(String html) {
+		return html.toLowerCase().indexOf(getToday().toLowerCase());
+	}
+
+	@Override
+	protected int getTomorrowIndex(String html) {
+		return html.toLowerCase().indexOf(getTomorrow().toLowerCase());
+	}
 
 }
