@@ -24,14 +24,6 @@
 	font-weight: inherit;
 }
 
-#semilasso table {
-	width: 100%;
-}
-
-#semilasso table * {
-	font-size: initial;
-}
-
 #opice span.price {
     float:right;
 }

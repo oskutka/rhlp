@@ -39,7 +39,6 @@ var restaurants = [
 	//["myfood", "My Food Truck", "Myfood #dailyMenu"],
 	["rebio", "Rebio", "Rebio"],
 	["vaclav", "Vaclav", "Vaclav .content table:first-of-type"],
-	["semilasso", "Semilasso", "Semilasso"],
 	["welcome", "Welcome", "Welcome .et_pb_text_" + dayOfWeek + " tr:nth-child(n+2)"],
 	["bavorska", "Bavorská", "Bavorska"],
 	["nepal", "Nepal", "Nepal tr:nth-child(n+2)"],
