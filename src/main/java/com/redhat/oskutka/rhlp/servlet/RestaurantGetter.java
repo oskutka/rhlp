@@ -51,7 +51,15 @@ public abstract class RestaurantGetter extends HttpServlet {
 		Date now = new Date();
 		return (now.getTime() - timeOfRetrieval.getTime() >= CACHE_TIMEOUT);
 	}
+	
+	protected boolean stripImages() {
+		return true;
+	}
 
+	private String stripImages(String html) {
+		return html.replaceAll("<img[^>]*>", " ");
+	}
+	
 	protected String getFreshMenuHTML() {
         StringBuffer sb = new StringBuffer();
         try
@@ -69,7 +77,7 @@ public abstract class RestaurantGetter extends HttpServlet {
         catch (IOException e) {
             e.printStackTrace();
         }
-        return sb.toString();
+        return stripImages() ? stripImages(sb.toString()) : sb.toString();
     }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
