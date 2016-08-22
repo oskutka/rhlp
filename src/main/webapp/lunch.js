@@ -30,6 +30,7 @@ var restaurants = [
 	["paladeo", "Paladeo", "Paladeo"],
 	["purkynka", "Purkyňka", "Purkynka"],
 	["opice", "U 3 Opic", "Opice"],
+	["molino", "Molino", "Molino #category-content table"],
 	["sporthotel", "A-Sport Hotel", "Sporthotel"],
 	["kotelna", "U Kotelny", "Kotelna .tmi-group"],
 	["prometheus", "Prometheus", "Prometheus #den-" + dayOfWeek],
