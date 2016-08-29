@@ -43,6 +43,7 @@ var restaurants = [
 	["bavorska", "Bavorská", "Bavorska"],
 	["nepal", "Nepal", "Nepal tr:nth-child(n+2)"],
 	["padthai", "Pad Thai", "PadThai"],
+	["crocus", "Crocus jidelna (Winston)", "Crocus"],
 ].map(function(data) {
 	return new Restaurant(data[0], data[1], data[2]);
 });
