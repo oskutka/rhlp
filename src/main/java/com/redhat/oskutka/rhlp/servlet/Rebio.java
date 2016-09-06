@@ -62,19 +62,19 @@ public class Rebio extends ParsingRestaurantGetter {
 			parser.parse();
 			PDFTextStripper stripper = new PDFTextStripper();
 			stripper.setSortByPosition(true);
-			PDDocument pdDoc = new PDDocument(parser.getDocument());
-			String parsedText = stripper.getText(pdDoc);
-			boolean wasEmptyLine = true;
-			for (String line: parseHTML(parsedText).split("\n")) {
-				if (!line.matches("^ *(Saláty, dezerty|Obsahuje Basic menu|Informace o alergenech).*")) {
-					line = line.trim();
-					if (line.length() > 0 || !wasEmptyLine) {
-						result.append(line.trim() + "\n");
+			try (PDDocument pdDoc = new PDDocument(parser.getDocument())) {
+				String parsedText = stripper.getText(pdDoc);
+				boolean wasEmptyLine = true;
+				for (String line: parseHTML(parsedText).split("\n")) {
+					if (!line.matches("^ *(Saláty, dezerty|Obsahuje Basic menu|Informace o alergenech).*")) {
+						line = line.trim();
+						if (line.length() > 0 || !wasEmptyLine) {
+							result.append(line.trim() + "\n");
+						}
+						wasEmptyLine = (line.length() == 0);
 					}
-					wasEmptyLine = (line.length() == 0);
 				}
 			}
-			pdDoc.getDocument().close();
 			return "<pre>" + result.toString() + "</pre>";
 		}
 		catch (MalformedURLException e) {
