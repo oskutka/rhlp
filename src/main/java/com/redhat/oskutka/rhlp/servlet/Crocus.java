@@ -6,6 +6,11 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.servlet.annotation.WebServlet;
 
@@ -20,12 +25,13 @@ public class Crocus extends ParsingRestaurantGetter {
     private static final long serialVersionUID = 7226051113762646793L;
 
     private static final String MAIN_DOMAIN = "http://www.crocus.cz";
+    private static final String PAGE_WITH_MENU_LINKS = "/104-zavodni-stravovani.html";
 
     /**
      * This is actually just URL to page that contains link to particular .doc file that contains the food menu.
      */
     protected String getUrl() {
-        return MAIN_DOMAIN + "/104-zavodni-stravovani.html";
+        return MAIN_DOMAIN + PAGE_WITH_MENU_LINKS;
     }
 
     @Override
@@ -93,9 +99,17 @@ public class Crocus extends ParsingRestaurantGetter {
             e.printStackTrace();
         }
 
-        int index = sb.indexOf("cz.doc");
-        String substring = sb.substring(0, index + 6);
-        substring = substring.substring(substring.indexOf("soubory"));
+        // From empirical evidence: correct link (mean latest) to current doc file might be sometimes ordered as a first one
+        // and sometimes as a second one in the HTML source code. Thus we need to check both available and take the one with
+        // greater number in the name.
+        List<String> allMatches = new ArrayList<String>();
+        Matcher m = Pattern.compile("soubory/[0-9]*cz.doc").matcher(sb.toString());
+        while (m.find()) {
+          allMatches.add(m.group());
+        }
+        Arrays.sort(allMatches.toArray());
+        // Get last item from sorted array - we expect that latest file has highest number in filename...
+        String substring = allMatches.get(allMatches.size() - 1);
 
         return MAIN_DOMAIN + "/" + substring;
     }
