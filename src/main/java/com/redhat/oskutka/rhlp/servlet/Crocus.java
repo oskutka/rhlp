@@ -6,9 +6,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -102,14 +101,14 @@ public class Crocus extends ParsingRestaurantGetter {
         // From empirical evidence: correct link (mean latest) to current doc file might be sometimes ordered as a first one
         // and sometimes as a second one in the HTML source code. Thus we need to check both available and take the one with
         // greater number in the name.
-        List<String> allMatches = new ArrayList<String>();
+        SortedSet<String> allMatches = new TreeSet<String>();
         Matcher m = Pattern.compile("soubory/[0-9]*cz.doc").matcher(sb.toString());
         while (m.find()) {
           allMatches.add(m.group());
         }
-        Arrays.sort(allMatches.toArray());
+
         // Get last item from sorted array - we expect that latest file has highest number in filename...
-        String substring = allMatches.get(allMatches.size() - 1);
+        String substring = allMatches.last();
 
         return MAIN_DOMAIN + "/" + substring;
     }
