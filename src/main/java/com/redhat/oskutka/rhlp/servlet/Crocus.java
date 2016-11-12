@@ -6,9 +6,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.SortedSet;
-import java.util.TreeSet;
-import java.util.regex.Matcher;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 import javax.servlet.annotation.WebServlet;
@@ -40,20 +39,24 @@ public class Crocus extends ParsingRestaurantGetter {
 
     @Override
     protected String getFreshMenuHTML() {
-        String result = "NOTHING-PARSED-YET";
+        String result = "FAILED TO RETRIEVE...";
 
         try {
             // First we need to get link to correct .doc file
             String docUrl = getDocUrl(new URL(getUrl()));
 
-            // Now we have to extract text from the .doc file (Apache Tika is awesome as it can
-            // consume also URL so we don't have to download it first)
-            Tika parserDocToText = new Tika();
-            String wholeWeekMenu = parserDocToText.parseToString(new URL(docUrl));
-            wholeWeekMenu = wholeWeekMenu.replaceAll("\\<[^>]*>", "").replaceAll("\n", "<br>");
+            if (docUrl != null) {
+                // Now we have to extract text from the .doc file (Apache Tika is awesome as it can
+                // consume also URL so we don't have to download it first)
+                Tika parserDocToText = new Tika();
+                String wholeWeekMenu = parserDocToText.parseToString(new URL(docUrl));
+                wholeWeekMenu = wholeWeekMenu.replaceAll("\\<[^>]*>", "").replaceAll("\n", "<br>");
 
-            // Well... now let's format it little bit so ParsingRestaurant class can handle result easily...
-            result = formatResult(wholeWeekMenu);
+                // Well... now let's format it little bit so ParsingRestaurant class can handle result easily...
+                result = formatResult(wholeWeekMenu);
+            } else {
+                return result;
+            }
         } catch (TikaException e) {
             e.printStackTrace();
         } catch (MalformedURLException e) {
@@ -85,12 +88,28 @@ public class Crocus extends ParsingRestaurantGetter {
     }
 
     private String getDocUrl(URL url) {
+        // From empirical evidence:
+        // - correct link (mean latest) to current doc file might be sometimes ordered as a first one and sometimes as a second
+        // one in the HTML source code. Thus we need to check both available and take the one with greater number in the name.
+        // - BUT also link to menu for upcoming week is usually added on Friday week before already. Thus on Friday we might get
+        // wrong .doc file (the one that targets upcoming week) if we settle just with the 'get the latest .doc' rule.
+
+        // Get number of current week
+        int week = currentWeekNumber();
+        // search for .doc file on the line
+        Pattern docPat = Pattern.compile("^.*cz\\.doc.*$");
+        // excerpt based on: 'Jídelní lístek 38. týden 19.9. - 23.9. 2016' -> >>tek 38. t<<
+        Pattern weekPat = Pattern.compile("^.*stek\\s" + week + "\\.\\st.*$");
+
+        // Save only chosen line from received HTML code that matches both regexps...
         StringBuffer sb = new StringBuffer();
         try {
             BufferedReader is = new BufferedReader(new InputStreamReader((InputStream) url.getContent(), getCharset()));
             String line;
             while ((line = is.readLine()) != null) {
-                sb.append(line);
+                if (docPat.matcher(line).matches() && weekPat.matcher(line).matches()) {
+                    sb.append(line);
+                }
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -98,18 +117,31 @@ public class Crocus extends ParsingRestaurantGetter {
             e.printStackTrace();
         }
 
-        // From empirical evidence: correct link (mean latest) to current doc file might be sometimes ordered as a first one
-        // and sometimes as a second one in the HTML source code. Thus we need to check both available and take the one with
-        // greater number in the name.
-        SortedSet<String> allMatches = new TreeSet<String>();
-        Matcher m = Pattern.compile("soubory/[0-9]*cz.doc").matcher(sb.toString());
-        while (m.find()) {
-          allMatches.add(m.group());
+//        SortedSet<String> allMatches = new TreeSet<String>();
+//        Matcher m = Pattern.compile("soubory/[0-9]*cz.doc").matcher(sb.toString());
+//        while (m.find()) {
+//          allMatches.add(m.group());
+//        }
+//
+//        // Get last item from sorted array - we expect that latest file has highest number in filename...
+//        String substring = allMatches.last();
+
+        // All right - we should have only one unique line with the .doc link, just retrieve correct link...
+        int index = sb.indexOf("cz.doc");
+        if (index >= 0) {
+            String substring = sb.substring(0, index + 6);
+            substring = substring.substring(substring.indexOf("soubory"));
+            return MAIN_DOMAIN + "/" + substring;
+        } else {
+            return null;
         }
+    }
 
-        // Get last item from sorted array - we expect that latest file has highest number in filename...
-        String substring = allMatches.last();
-
-        return MAIN_DOMAIN + "/" + substring;
+    private int currentWeekNumber() {
+        Calendar cal = Calendar.getInstance();
+        cal.setFirstDayOfWeek(Calendar.MONDAY);
+        cal.setMinimalDaysInFirstWeek(4); // defined by czech calendar rules, see: https://cs.wikipedia.org/wiki/T%C3%BDden
+        cal.setTime(new Date());
+        return cal.get(Calendar.WEEK_OF_YEAR);
     }
 }
