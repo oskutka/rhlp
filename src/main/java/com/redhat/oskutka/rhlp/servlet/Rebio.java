@@ -25,12 +25,15 @@ public class Rebio extends ParsingRestaurantGetter {
 		try {
 			URL pageUrl = new URL("http://www.rebio.cz/Rebio-Park/Nase-nabidka/gn-ha.folder.aspx");
 			BufferedReader is = new BufferedReader(new InputStreamReader((InputStream) pageUrl.getContent(), getCharset()));
+			String previousLine = "";
 			String line;
 			while ((line = is.readLine()) != null) {
 				if (line.contains("Jídelní lístek Rebio Park")) {
-					pdfUrl = "http://www.rebio.cz/Rebio-Park/Nase-nabidka/Jidelni-listek-Rebio-Park/" + line.replaceAll(".*href=\"([^\"]*)\".*", "$1");
+				    String search = previousLine + line;
+					pdfUrl = "http://www.rebio.cz/Rebio-Park/Nase-nabidka/" + search.replaceAll(".*href=\"([^\"]*)\".*", "$1");
 					break;
 				}
+				previousLine = line;
 			}
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
