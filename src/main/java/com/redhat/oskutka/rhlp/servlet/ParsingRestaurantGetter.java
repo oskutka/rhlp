@@ -1,5 +1,7 @@
 package com.redhat.oskutka.rhlp.servlet;
 
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.Date;
 
 
@@ -22,12 +24,16 @@ public abstract class ParsingRestaurantGetter extends RestaurantGetter {
 		super();
 	}
 	
-	protected String parseHTML(String freshMenuHTML) {
-		String result = freshMenuHTML;
-		int beginIndex = getBeginIndex(result);
-		int endIndex = getEndIndex(result);
-		result = result.substring(beginIndex, endIndex);
-		return result;
+	protected String parseHTML(String freshMenuHTML) throws ParseException {
+		try {
+			String result = freshMenuHTML;
+			int beginIndex = getBeginIndex(result);
+			int endIndex = getEndIndex(result);
+			result = result.substring(beginIndex, endIndex);
+			return result;
+		} catch (IndexOutOfBoundsException e) {
+			throw new ParseException(e.getMessage(), 0);
+		}
 	}
 
 	protected int getEndIndex(String result) {
@@ -85,7 +91,7 @@ public abstract class ParsingRestaurantGetter extends RestaurantGetter {
 	}
 
 	@Override
-	protected String getFreshMenuHTML() {
+	protected String getFreshMenuHTML() throws IOException, ParseException {
 		return parseHTML(super.getFreshMenuHTML());
 	}
 }

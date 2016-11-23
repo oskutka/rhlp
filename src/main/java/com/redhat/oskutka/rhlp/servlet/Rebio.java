@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
 
 import javax.servlet.annotation.WebServlet;
 
@@ -56,7 +57,7 @@ public class Rebio extends ParsingRestaurantGetter {
 	protected String getDayClosingTag() {
 		return "";
 	}
-	protected String getFreshMenuHTML() {
+	protected String getFreshMenuHTML() throws ParseException {
 		try
 		{
 			StringBuffer result = new StringBuffer();
