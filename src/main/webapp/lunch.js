@@ -27,7 +27,7 @@ function createRangeSelector(prefix, begin, end) {
 var restaurants = [
 	["kanas_restaurace", "Kanas - Restaurace", "Kanas #tab1 *:nth-child(n+2)"],
 	["kanas_jidelna", "Kanas - Jídelna", "Kanas #tab2 *:nth-child(n+2)"],
-	["paladeo", "Paladeo", "Paladeo"],
+	//["paladeo", "Paladeo", "Paladeo"],
 	["purkynka", "Purkyňka", "Purkynka"],
 	["opice", "U 3 Opic", "Opice"],
 	["molino", "Molino", "Molino #category-content table"],
