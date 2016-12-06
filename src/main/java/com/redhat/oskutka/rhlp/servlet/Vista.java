@@ -5,12 +5,13 @@ import javax.servlet.annotation.WebServlet;
 /**
  * Servlet implementation class Vista
  */
+@SuppressWarnings("serial")
 @WebServlet("/Vista")
-public class Vista extends RestaurantGetter {
-	private static final long serialVersionUID = -2089022964121446361L;
+public class Vista extends ZomatoRestaurantGetter {
 
-	protected String getUrl() {
-        return "https://www.zomato.com/cs/brno/hotel-vista-medl%C3%A1nky-brno-sever#denni_menu";
-    }
+	@Override
+	protected String getZomatoId() {
+		return "brno/hotel-vista-medl%C3%A1nky-brno-sever";
+	}
 
 }

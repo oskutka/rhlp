@@ -73,23 +73,22 @@ public abstract class RestaurantGetter extends HttpServlet {
 	
 	protected String getFreshMenuHTML() throws IOException, ParseException {
         StringBuffer sb = new StringBuffer();
-        try
-        {
-            URL url = new URL(getUrl());
-            URLConnection connection = url.openConnection();
-            connection.setReadTimeout(20000);
-            connection.setConnectTimeout(20000); 
+            URLConnection connection = getConnection();
             BufferedReader is = new BufferedReader(new InputStreamReader((InputStream) connection.getContent(), getCharset()));
             String line;
             while ((line = is.readLine()) != null) {
             	sb.append(line);
             }
-        }
-        catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
         return stripImages() ? stripImages(sb.toString()) : sb.toString();
     }
+
+	protected URLConnection getConnection() throws IOException {
+		URL url = new URL(getUrl());
+		URLConnection connection = url.openConnection();
+		connection.setReadTimeout(20000);
+		connection.setConnectTimeout(20000);
+		return connection;
+	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     	doGetAndPost(request, response);

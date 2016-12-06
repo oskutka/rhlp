@@ -6,11 +6,12 @@ import javax.servlet.annotation.WebServlet;
  * Servlet implementation class PadThai
  */
 @WebServlet("/PadThai")
-public class PadThai extends ParsingRestaurantGetter {
+public class PadThai extends ZomatoRestaurantGetter {
 	private static final long serialVersionUID = 4L;
 
-	protected String getUrl() {
-        return "https://www.zomato.com/brno/pad-thai-kr%C3%A1lovo-pole-brno-sever/menu";
-    }
+	@Override
+	protected String getZomatoId() {
+		return "brno/pad-thai-kr%C3%A1lovo-pole-brno-sever";
+	}
 
 }

@@ -6,11 +6,12 @@ import javax.servlet.annotation.WebServlet;
  * Servlet implementation class Bavorska
  */
 @WebServlet("/Bavorska")
-public class Bavorska extends ParsingRestaurantGetter {
+public class Bavorska extends ZomatoRestaurantGetter {
 	private static final long serialVersionUID = 4064993267050512376L;
 
-	protected String getUrl() {
-        return "https://www.zomato.com/cs/bavorska/menu";
-    }
+	@Override
+	protected String getZomatoId() {
+		return "bavorska";
+	}
 
 }

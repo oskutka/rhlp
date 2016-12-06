@@ -6,11 +6,12 @@ import javax.servlet.annotation.WebServlet;
  * Servlet implementation class Kotelna
  */
 @WebServlet("/Kotelna")
-public class Kotelna extends RestaurantGetter {
+public class Kotelna extends ZomatoRestaurantGetter {
 	private static final long serialVersionUID = -3544687922716446281L;
 
-	protected String getUrl() {
-        return "https://www.zomato.com/cs/brno/u-kotelny-kr%C3%A1lovo-pole-brno-sever#denni_menu";
-    }
+	@Override
+	protected String getZomatoId() {
+		return "brno/u-kotelny-kr%C3%A1lovo-pole-brno-sever";
+	}
 
 }
