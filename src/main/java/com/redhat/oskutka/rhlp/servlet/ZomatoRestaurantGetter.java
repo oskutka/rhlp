@@ -8,7 +8,7 @@ public abstract class ZomatoRestaurantGetter extends ParsingRestaurantGetter {
 
 	@Override
 	protected String getUrl() {
-        return "https://www.zomato.com/cs/" + getZomatoId() + "/denn%C3%AD-menu";
+        return "https://www.zomato.com/cs/widgets/daily_menu.php?entity_id=" + getZomatoId();
 	}
 	
 	protected abstract String getZomatoId();

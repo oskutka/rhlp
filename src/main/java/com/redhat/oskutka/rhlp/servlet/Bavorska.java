@@ -11,7 +11,7 @@ public class Bavorska extends ZomatoRestaurantGetter {
 
 	@Override
 	protected String getZomatoId() {
-		return "bavorska";
+		return "16505905";
 	}
 
 }

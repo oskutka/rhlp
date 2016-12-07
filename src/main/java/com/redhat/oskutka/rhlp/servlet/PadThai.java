@@ -11,7 +11,7 @@ public class PadThai extends ZomatoRestaurantGetter {
 
 	@Override
 	protected String getZomatoId() {
-		return "brno/pad-thai-kr%C3%A1lovo-pole-brno-sever";
+		return "16506806";
 	}
 
 }

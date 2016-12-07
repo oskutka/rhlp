@@ -11,7 +11,7 @@ public class Vista extends ZomatoRestaurantGetter {
 
 	@Override
 	protected String getZomatoId() {
-		return "brno/hotel-vista-medl%C3%A1nky-brno-sever";
+		return "16506118";
 	}
 
 }
