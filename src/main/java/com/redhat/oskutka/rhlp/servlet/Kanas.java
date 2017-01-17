@@ -10,7 +10,7 @@ public class Kanas extends RestaurantGetter {
     private static final long serialVersionUID = 3080185090102093278L;
 
     protected String getUrl() {
-        return "http://kanas.cz/stranka/jidelna";
+        return "http://www.kanas.cz/stranka/jidelna";
     }
 
 }
