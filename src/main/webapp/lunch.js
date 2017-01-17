@@ -45,6 +45,7 @@ var restaurants = [
 	["nepal", "Nepal", "Nepal tr:nth-child(n+2)"],
 	["padthai", "Pad Thai", "PadThai"],
 	["crocus", "Crocus jidelna (Winston)", "Crocus"],
+	["cookpoint", "Cook Point", "Cookpoint .hpbox.first table"],
 ].map(function(data) {
 	return new Restaurant(data[0], data[1], data[2]);
 });
