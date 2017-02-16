@@ -100,7 +100,7 @@ public class Crocus extends ParsingRestaurantGetter {
         // search for .doc file on the line
         Pattern docPat = Pattern.compile("^.*cz\\.doc.*$");
         // excerpt based on: 'Jídelní lístek 38. týden 19.9. - 23.9. 2016' -> >>tek 38. t<<
-        Pattern weekPat = Pattern.compile("^.*stek\\s" + week + "\\.\\st.*$");
+        Pattern weekPat = Pattern.compile("^.*stek\\s" + week + "\\.\\s?t.*$");
 
         // Save only chosen line from received HTML code that matches both regexps...
         StringBuffer sb = new StringBuffer();
