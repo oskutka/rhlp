@@ -33,7 +33,7 @@ var restaurants = [
 	["molino", "Molino", "Molino #category-content table"],
 	["sporthotel", "A-Sport Hotel", "Sporthotel"],
 	["kotelna", "U Kotelny", "Kotelna"],
-	["prometheus", "Prometheus", "Prometheus #den-" + dayOfWeek],
+	["prometheus", "Prometheus", "Prometheus .daily-menu"],
 	["vista", "Hotel Vista", "Vista"],
 	["menza", "Menza Purkyňova", "Menza #m10"],
 	["velorex", "Velorex", "Velorex #denniNabidka > :nth-child(n+2) "],

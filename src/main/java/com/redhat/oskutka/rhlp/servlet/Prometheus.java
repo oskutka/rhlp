@@ -10,7 +10,7 @@ public class Prometheus extends RestaurantGetter {
 	private static final long serialVersionUID = 7609185514424754160L;
 
 	protected String getUrl() {
-        return "http://www.hotel-prometheus.cz/cz/restaurace";
+        return "https://hotel-prometheus.cz/cs/restaurace/denni-menu";
     }
 
 }
