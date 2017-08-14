@@ -6,10 +6,10 @@ import javax.servlet.annotation.WebServlet;
  */
 @WebServlet("/Crocus")
 public class Crocus extends RestaurantGetter {
-	private static final long serialVersionUID = 8896145050453227749L;
+    private static final long serialVersionUID = 8896145050453227749L;
 
-	protected String getUrl() {
-        return "https://www.menicka.cz/3875-crocus.html";
+    protected String getUrl() {
+        return "https://www.menicka.cz/3875-pekarna-crocus-s.r.o..html";
     }
 
     @Override
