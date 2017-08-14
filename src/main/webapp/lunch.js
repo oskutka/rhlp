@@ -44,7 +44,7 @@ var restaurants = [
 	["bavorska", "Bavorská", "Bavorska .menicka:first-of-type :nth-child(n+3)"],
 	["nepal", "Nepal", "Nepal tr:nth-child(n+2)"],
 	["padthai", "Pad Thai", "PadThai"],
-	["crocus", "Crocus jidelna (Winston)", "Crocus .menicka:first-of-type :nth-child(n+3)"],
+	["crocus", "Crocus jidelna (Winston)", "Crocus .menicka:nth-of-type(2) :nth-child(n+3)"],
 	["cookpoint", "Cook Point", "Cookpoint .hpbox.first table"],
 ].map(function(data) {
 	return new Restaurant(data[0], data[1], data[2]);
