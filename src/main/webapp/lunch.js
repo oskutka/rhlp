@@ -29,6 +29,7 @@ var restaurants = [
 	["kanas_jidelna", "Kanas - Jídelna", "Kanas #tab2 *:nth-child(n+2)"],
 	//["paladeo", "Paladeo", "Paladeo"],
 	["purkynka", "Purkyňka", "Purkynka"],
+	["mozzarella", "Pizzerie Mozzarella", "Mozzarella"],
 	["opice", "U 3 Opic", "Opice"],
 	["molino", "Molino", "Molino #category-content table"],
 	["sporthotel", "A-Sport Hotel", "Sporthotel"],
