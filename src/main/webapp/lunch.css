@@ -45,3 +45,7 @@
 .clear {
     clear: both;
 }
+
+#moname p {
+	text-align: left;
+}
