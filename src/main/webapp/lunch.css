@@ -47,5 +47,5 @@
 }
 
 #moname p {
-	text-align: left;
+	text-align: left !important;
 }
