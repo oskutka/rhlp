@@ -3,7 +3,7 @@ What is RHLP?
 
 Daily menu offerings for restaurants near the Brno Red Hat office.
 
-You can find a staged instance at http://rhlp-oskutka.rhcloud.com
+You can find a staged instance at http://rhlp.skutka.cz/
 
 How to run it locally (if you are experienced with web development)
 =====================
