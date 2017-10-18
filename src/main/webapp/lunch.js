@@ -37,6 +37,8 @@ var restaurants = [
 	["prometheus", "Prometheus", "Prometheus .daily-menu"],
 	["vista", "Hotel Vista", "Vista"],
 	["menza", "Menza Purkyňova", "Menza #m10"],
+	["menzaFch", "Studentská jídelna FCH", "MenzaFch #m10"],
+	["menzaKolejni", "Menza Kolejní", "MenzaKolejni #m10"],
 	["velorex", "Velorex", "Velorex #denniNabidka > :nth-child(n+2) "],
 	//["myfood", "My Food Truck", "Myfood #dailyMenu"],
 	["rebio", "Rebio", "Rebio"],
