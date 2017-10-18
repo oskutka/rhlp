@@ -6,7 +6,7 @@ import javax.servlet.annotation.WebServlet;
  * Servlet implementation class Menza
  */
 @WebServlet("/Mozzarella")
-public class Menza extends RestaurantGetter {
+public class Mozzarella extends RestaurantGetter {
 	private static final long serialVersionUID = -1438512371900562512L;
 
 	protected String getUrl() {
