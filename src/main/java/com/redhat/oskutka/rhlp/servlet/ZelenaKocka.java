@@ -3,7 +3,7 @@ package com.redhat.oskutka.rhlp.servlet;
 import javax.servlet.annotation.WebServlet;
 
 /**
- * Servlet implementation class Prometheus
+ * Servlet implementation class ZelenaKocka
  */
 @WebServlet("/ZelenaKocka")
 public class ZelenaKocka extends RestaurantGetter {
