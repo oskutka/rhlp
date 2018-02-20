@@ -65,7 +65,7 @@ public abstract class RestaurantGetter extends HttpServlet {
 		return true;
 	}
 
-	private String stripImages(String html) {
+	protected String stripImages(String html) {
 		return html.replaceAll("<img[^>]*>", " ");
 	}
 	
@@ -80,12 +80,16 @@ public abstract class RestaurantGetter extends HttpServlet {
         return stripImages() ? stripImages(sb.toString()) : sb.toString();
     }
 
-	protected URLConnection getConnection() throws IOException {
-		URL url = new URL(getUrl());
+	protected URLConnection getConnection(String urlStr) throws IOException {
+		URL url = new URL(urlStr);
 		URLConnection connection = url.openConnection();
 		connection.setReadTimeout(20000);
 		connection.setConnectTimeout(20000);
 		return connection;
+	}
+
+	protected URLConnection getConnection() throws IOException {
+		return getConnection(getUrl());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
