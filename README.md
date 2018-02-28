@@ -7,7 +7,7 @@ You can find a staged instance at http://rhlp.skutka.cz/
 
 How to run it locally (if you are experienced with web development)
 =====================
-To run rhlp locally, execute `mvn package`. That will create `rhlp-1.0.war` file, which you can deploy onto a server (E.g. you can copy it into WildFly's `standalone/deployments` directory)
+To run rhlp locally, execute `mvn package`. That will create `rhlp-1.0.war` file, which you can deploy onto a server (E.g. you can copy it into WildFly's `standalone/deployments` directory). For Zomato restaurants you need their api-key, which you can get at `https://developers.zomato.com`. Set it as a system property named ZOMATO_API_KEY.
 
 
 How to run it locally (if you're new to the java world)
