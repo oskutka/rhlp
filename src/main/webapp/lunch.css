@@ -33,6 +33,10 @@
     font-weight:normal;
 }
 
+#kanas_jidelna span.cena, #kanas_restaurace span.cena {
+    margin-left:2em;
+}
+
 /* zomato */
 .right {
     float: right;
