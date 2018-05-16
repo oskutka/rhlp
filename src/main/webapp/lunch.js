@@ -47,6 +47,7 @@ var restaurants = [
 	["welcome", "Welcome", "Welcome .et_pb_text_" + dayOfWeek + " tr:nth-child(n+2)"],
 	["bavorska", "Bavorská", "Bavorska .menicka:first-of-type :nth-child(n+3)"],
 	["nepal", "Nepal", "Nepal tr:nth-child(n+2)"],
+	["tasteOfIndia", "Taste of India", "TasteOfIndia"],
 	["padthai", "Pad Thai", "PadThai"],
 	["crocus", "Crocus jidelna (Winston)", "Crocus .menicka:nth-of-type(2) :nth-child(n+3)"],
 	["cookpoint", "Cook Point", "Cookpoint .hpbox.first table"],
