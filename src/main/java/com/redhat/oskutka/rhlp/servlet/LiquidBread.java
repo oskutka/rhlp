@@ -3,11 +3,11 @@ package com.redhat.oskutka.rhlp.servlet;
 import javax.servlet.annotation.WebServlet;
 
 /**
- * Servlet implementation class Opice
+ * Servlet implementation class Liquid Bread
  */
 @WebServlet("/LiquidBread")
-public class  extends ZomatoRestaurantGettr {
-    private static final long serialVersionUID = 1L;
+public class LiquidBread extends ZomatoRestaurantGetter {
+	private static final long serialVersionUID = -7476963319576983227L;
 
     @Override
     protected String getZomatoId() {
