@@ -37,7 +37,7 @@ public class Sporthotel extends ParsingRestaurantGetter {
 	}
 
 	@Override
-	protected int getTomorrowIndex(String html) {
+	protected int getTomorrowIndex(int beginIndex, String html) {
 		return html.toLowerCase().indexOf(getTomorrow().toLowerCase());
 	}
 
