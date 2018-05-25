@@ -28,7 +28,7 @@ public abstract class ParsingRestaurantGetter extends RestaurantGetter {
 		try {
 			String result = freshMenuHTML;
 			int beginIndex = getBeginIndex(result);
-			int endIndex = getEndIndex(result);
+			int endIndex = getEndIndex(beginIndex, result);
 			result = result.substring(beginIndex, endIndex);
 			return result;
 		} catch (IndexOutOfBoundsException e) {
@@ -36,8 +36,9 @@ public abstract class ParsingRestaurantGetter extends RestaurantGetter {
 		}
 	}
 
-	protected int getEndIndex(String result) {
-		return result.lastIndexOf(getDayClosingTag(), getTomorrowIndex(result)) + getDayClosingTag().length();
+	protected int getEndIndex(int beginIndex, String html) {
+		int tomorrowIndex = getTomorrowIndex(beginIndex, html);
+		return html.lastIndexOf(getDayClosingTag(), tomorrowIndex) + getDayClosingTag().length();
 	}
 
 	protected int getBeginIndex(String result) {
@@ -74,7 +75,7 @@ public abstract class ParsingRestaurantGetter extends RestaurantGetter {
 	}
 	
 	protected int getTodayIndex(String html) {
-		return getIndex(html, getToday());
+		return getLastIndex(html, getToday());
 	}
 	
 	protected String getTomorrow() {
@@ -82,11 +83,15 @@ public abstract class ParsingRestaurantGetter extends RestaurantGetter {
 		return getDays()[dayOfWeek > 5 ? 5 : dayOfWeek];
 	}
 	
-	protected int getTomorrowIndex(String html) {
-		return getIndex(html, getTomorrow()); 
+	protected int getTomorrowIndex(int beginIndex, String html) {
+		return getFirstIndex(html.substring(beginIndex), getTomorrow()) + beginIndex; 
 	}
 	
-	private int getIndex(String html, String substring) {
+	private int getFirstIndex(String html, String substring) {
+		return html.toLowerCase().indexOf(substring.toLowerCase());
+	}
+
+	private int getLastIndex(String html, String substring) {
 		return html.toLowerCase().lastIndexOf(substring.toLowerCase());
 	}
 
