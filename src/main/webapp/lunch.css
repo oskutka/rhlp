@@ -53,3 +53,24 @@
 #moname p {
 	text-align: left !important;
 }
+
+/*hide the name of the day*/
+#charliesmill>div:first-child {
+    display:none;
+}
+
+#charliesmill .row-content :nth-child(1) {
+    float:left; 
+    #clear:left;
+}
+#charliesmill .row-content :nth-child(2) {
+    text-align:right;
+    float:right; 
+}
+#charliesmill .row {
+    clear:both;
+}
+#charliesmill {
+    padding-bottom:4em;
+}
+
