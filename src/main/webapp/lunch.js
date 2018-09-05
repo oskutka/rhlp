@@ -51,7 +51,7 @@ var restaurants = [
 	["padthai", "Pad Thai", "PadThai"],
 	["crocus", "Crocus jidelna (Winston)", "Crocus .menicka:nth-of-type(2) :nth-child(n+3)"],
 	["cookpoint", "Cook Point", "Cookpoint .hpbox.first table"],
-	["moname", "Moname", "Moname"],
+	["moname", "Moname", "Moname .wpb_wrapper > p[align='CENTER']:nth-child(n+5) > span[style='color: #000000;']"],
 	["liquidBread", "Liquid Bread", "LiquidBread"],
 	["brnenka", "Brněnka", "Brnenka"],
 	["portoriko", "Portoriko", "Portoriko"],

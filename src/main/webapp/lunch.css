@@ -50,8 +50,8 @@
     clear: both;
 }
 
-#moname p {
-	text-align: left !important;
+#moname span {
+    display:block;
 }
 
 /*hide the name of the day*/
