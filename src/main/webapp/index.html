@@ -15,6 +15,8 @@
 		<script	src="lunch.js"></script>
 		<link rel="stylesheet" href="lunch.css">
 		<script>
+			checkLocalStorage();
+
 			$(document).ready(function() {
 				if (!isTouchDevice()) {
 					// Doesn't play well with touch devices. TODO make it more mobile friendly
@@ -37,11 +39,10 @@
 		
 				// load menus of all the restaurant
 				for (var i = 0 ; i < restaurants.length; i++) {
-					var restaurant = restaurants[i];
+					var restaurant = getRestaurant(localStorage["cz.redhat.oskutka.rhlp.order." + i + ".id"]);
 					$('div#' + restaurant.id).load(restaurant.url);
 				}
 			});
-			checkLocalStorage();
 		</script>
 	</head>
 	<body>
