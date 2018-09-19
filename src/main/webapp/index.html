@@ -36,17 +36,6 @@
 					$("#menus > div").collapsible( "option", "collapsedIcon", "bars" );
 					$("#menus > div").collapsible( "option", "expandedIcon", "bars" );
 				}
-		
-				// load menus of all expanded restaurants
-				// ... queria: this was not needed in my case, as i had it already being loaded
-				// ...         by collapsible's initialization triggering on(collapsibleexpand)
-				// ...         if that's correct behaviour/assumption, then we can drop this code
-				// for (var i = 0 ; i < restaurants.length; i++) {
-				// 	restaurant = getRestaurant(localStorage["cz.redhat.oskutka.rhlp.order." + i + ".id"]);
-				// 	if( ! restaurant.isCollapsed() ) {
-				// 		$('div#' + restaurant.id).load(restaurant.url);
-				// 	}
-				// }
 			});
 		</script>
 	</head>
