@@ -50,10 +50,6 @@
     clear: both;
 }
 
-#moname span {
-    display:block;
-}
-
 /*hide the name of the day*/
 #charliesmill>div:first-child {
     display:none;
