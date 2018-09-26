@@ -36,6 +36,7 @@ var restaurants = [
 	["kotelna", "U Kotelny", "Kotelna"],
 	["prometheus", "Prometheus", "Prometheus .daily-menu"],
 	["zelena_kocka", "Zelena Kocka", "ZelenaKocka #dnesni-menu"],
+	["montebu", "Monte Bu", "MonteBu .menu"],
 	["vista", "Hotel Vista", "Vista"],
 	["menza", "Menza Purkyňova", "Menza #m10"],
 	["menzaFch", "Studentská jídelna FCH", "MenzaFch #m16"],
