@@ -56,6 +56,7 @@ var restaurants = [
 	["brnenka", "Brněnka", "Brnenka"],
 	["portoriko", "Portoriko", "Portoriko"],
 	["charliesmill", "Charlie's Mill", "CharliesMill"],
+	["spravnemisto", "Správné Místo", "SpravneMisto"],
 ].map(function(data) {
 	return new Restaurant(data[0], data[1], data[2]);
 });
