@@ -21,7 +21,7 @@ public class Purkynka extends ParsingRestaurantGetter {
 
 	@Override
 	protected String getDayOpeningTag() {
-		return "";
+		return "<strong>";
 	}
 	
 	@Override
@@ -31,7 +31,7 @@ public class Purkynka extends ParsingRestaurantGetter {
 
 	@Override
 	protected String[] getDays() {
-		return new String[]{"Pondělí", "Úterý", "Středa", "Čtvrtek", "Pátek", "</pre>", "Neděle"};
+		return new String[]{"Pond</strong><strong>ělí", "Úterý", "St</strong><strong>ředa", "Čtvrtek", "Pátek", "</pre>", "Neděle"};
 	}
 
 }
