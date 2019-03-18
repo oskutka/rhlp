@@ -6,6 +6,7 @@ import java.util.Date;
 
 
 /*
+ * [menuSectionBegin]
  * [beginIndex]<dayOpeningTag>
  *   <p>[todayIndex]pondeli</p>
  *   <ul>
@@ -16,6 +17,10 @@ import java.util.Date;
  * <div>
  *   <p>[tomorrowIndex]pondeli</p>
  *   ...
+ *   utery
+ *   ...
+ *   patek
+ * [menuSectionEnd]
  */
 public abstract class ParsingRestaurantGetter extends RestaurantGetter {
 	private static final long serialVersionUID = 8693643179400623490L;
@@ -26,11 +31,14 @@ public abstract class ParsingRestaurantGetter extends RestaurantGetter {
 	
 	protected String parseHTML(String freshMenuHTML) throws ParseException {
 		try {
-			String result = freshMenuHTML;
-			int beginIndex = getBeginIndex(result);
-			int endIndex = getEndIndex(beginIndex, result);
-			result = result.substring(beginIndex, endIndex);
-			return result;
+			String html = freshMenuHTML;
+			if (restrictToMenuSection()) {
+				html = html.substring(getMenuSectionBeginIndex(html), getMenuSectionEndIndex(html));
+			}
+			int beginIndex = getBeginIndex(html);
+			int endIndex = getEndIndex(beginIndex, html);
+			html = html.substring(beginIndex, endIndex);
+			return html;
 		} catch (IndexOutOfBoundsException e) {
 			throw new ParseException(e.getMessage(), 0);
 		}
@@ -99,4 +107,30 @@ public abstract class ParsingRestaurantGetter extends RestaurantGetter {
 	protected String getFreshMenuHTML() throws IOException, ParseException {
 		return parseHTML(super.getFreshMenuHTML());
 	}
+	
+	
+	/**
+	 * If true, the html is not parsed for dayOfWeek strings as a whole, but only the section [menuSectionBegin]...[menuSectionEnd]
+	 * In that case you need to override getMenuSectionBeginString and getMenuSectionEndString 
+	 */
+	protected boolean restrictToMenuSection() {
+		return false;
+	}
+	
+	protected String getMenuSectionBeginString() {
+		return "";
+	}
+	
+	private int getMenuSectionBeginIndex(String html) {
+		return getLastIndex(html, getMenuSectionBeginString());
+	}
+	
+	protected String getMenuSectionEndString() {
+		return "";
+	}
+	
+	private int getMenuSectionEndIndex(String html) {
+		return getFirstIndex(html, getMenuSectionEndString());
+	}
+	
 }

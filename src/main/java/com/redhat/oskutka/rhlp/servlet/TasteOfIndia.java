@@ -30,6 +30,20 @@ public class TasteOfIndia extends ParsingRestaurantGetter {
 	@Override
 	protected String[] getDays() {
 		return new String[]{"Pondělí", "Úterý", "Středa", "Čtvrtek", "Pátek", "</ul>", "Neděle"};
-	}	
-
+	}
+	
+	@Override
+	protected boolean restrictToMenuSection() {
+		return true;
+	}
+	
+	@Override
+	protected String getMenuSectionBeginString() {
+		return "Daily menu";
+	}
+	
+	@Override
+	protected String getMenuSectionEndString() {
+		return "Jídelní lístek";
+	}
 }
