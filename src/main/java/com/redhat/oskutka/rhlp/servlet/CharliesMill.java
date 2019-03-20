@@ -9,7 +9,7 @@ public class CharliesMill extends ParsingRestaurantGetter {
 
 	@Override
 	protected String getUrl() {
-		return "https://www.charliesmill.cz/menu/";
+		return "http://www.charliesmill.cz/menu/";
 	}
 	
 	@Override
