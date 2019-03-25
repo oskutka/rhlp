@@ -17,4 +17,8 @@ public class PurkynkaTest extends ParsingTest {
 		};
 	}
 
+	
+	protected String getHtmlFileName() {
+		return "/Purkynka2.html";
+	}
 }
