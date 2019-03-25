@@ -44,7 +44,6 @@ var restaurants = [
 	//["myfood", "My Food Truck", "Myfood #dailyMenu"],
 	["rebio", "Rebio", "Rebio"],
 	["vaclav", "Vaclav", "Vaclav .content table:first-of-type"],
-	["welcome", "Welcome", "Welcome .et_pb_text_" + dayOfWeek + " tr:nth-child(n+2)"],
 	["bavorska", "Bavorská", "Bavorska .menicka:first-of-type :nth-child(n+3)"],
 	["nepal", "Nepal", "Nepal tr:nth-child(n+2)"],
 	["tasteOfIndia", "Taste of India", "TasteOfIndia"],
