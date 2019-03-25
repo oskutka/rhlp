@@ -44,7 +44,6 @@ var restaurants = [
 	//["myfood", "My Food Truck", "Myfood #dailyMenu"],
 	["rebio", "Rebio", "Rebio"],
 	["vaclav", "Vaclav", "Vaclav .content table:first-of-type"],
-	["bavorska", "Bavorská", "Bavorska .menicka:first-of-type :nth-child(n+3)"],
 	["nepal", "Nepal", "Nepal tr:nth-child(n+2)"],
 	["tasteOfIndia", "Taste of India", "TasteOfIndia"],
 	["padthai", "Pad Thai", "PadThai"],
