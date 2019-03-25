@@ -31,7 +31,6 @@ var restaurants = [
 	["purkynka", "Purkyňka", "Purkynka"],
 	["mozzarella", "Pizzerie Mozzarella", "Mozzarella #m18"],
 	["opice", "U 3 Opic", "Opice"],
-	["molino", "Molino", "Molino #category-content table"],
 	["sporthotel", "A-Sport Hotel", "Sporthotel"],
 	["kotelna", "U Kotelny", "Kotelna"],
 	["prometheus", "Prometheus", "Prometheus .daily-menu"],
