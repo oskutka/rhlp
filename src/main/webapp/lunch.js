@@ -48,7 +48,7 @@ var restaurants = [
 	["tasteOfIndia", "Taste of India", "TasteOfIndia"],
 	["padthai", "Pad Thai", "PadThai"],
 	["crocus", "Crocus jidelna (Winston)", "Crocus .menicka:nth-of-type(2) :nth-child(n+3)"],
-	["cookpoint", "Cook Point", "Cookpoint .hpbox.first table"],
+	["cookpoint", "Cook Point", "Cookpoint .hpbox table"],
 	["liquidBread", "Liquid Bread", "LiquidBread"],
 	["brnenka", "Brněnka", "Brnenka"],
 	["portoriko", "Portoriko", "Portoriko"],
