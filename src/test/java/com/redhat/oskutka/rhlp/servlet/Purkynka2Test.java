@@ -1,9 +1,9 @@
 package com.redhat.oskutka.rhlp.servlet;
 
-public class PurkynkaTest extends ParsingTest {
+public class Purkynka2Test extends ParsingTest {
 
 	@SuppressWarnings("serial")
-	public PurkynkaTest() {
+	public Purkynka2Test() {
 		// creates ParsingRestaurantGetter that retrieves the html from file and
 		// also takes weekday from here instead of the current date
 		parser = new Purkynka() {
