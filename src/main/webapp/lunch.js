@@ -41,7 +41,6 @@ var restaurants = [
 	["menzaKolejni", "Menza Kolejní", "MenzaKolejni #m20"],
 	["velorex", "Velorex", "Velorex #denniNabidka > :nth-child(n+2) "],
 	//["myfood", "My Food Truck", "Myfood #dailyMenu"],
-	["rebio", "Rebio", "Rebio"],
 	["nepal", "Nepal", "Nepal"],
 	["tasteOfIndia", "Taste of India", "TasteOfIndia"],
 	["padthai", "Pad Thai", "PadThai"],
