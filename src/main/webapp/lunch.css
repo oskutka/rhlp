@@ -69,3 +69,10 @@
 #purkynka p {
     text-align:left;
 }
+
+#crocus li {
+	list-style: none;
+}
+#crocus ul {
+	padding-left:0;
+}
