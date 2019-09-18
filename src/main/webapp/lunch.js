@@ -50,6 +50,7 @@ var restaurants = [
 	["portoriko", "Portoriko", "Portoriko"],
 	["charliesmill", "Charlie's Mill", "CharliesMill"],
 	["spravnemisto", "Správné Místo", "SpravneMisto"],
+	["liquidbread", "Liquid Bread", "LiquidBread"],
 ].map(function(data) {
 	return new Restaurant(data[0], data[1], data[2]);
 });
