@@ -22,22 +22,22 @@ public class LiquidBread extends ParsingRestaurantGetter {
 	
 	@Override
 	protected String getDayOpeningTag() {
-		return "<p";
+		return "";
 	}
 
 	@Override
 	protected String getDayClosingTag() {
-		return "</p>";
+		return "";
 	}
 	@Override
 	protected String[] getDays() {
-		return new String[]{"PONDĚLÍ", "ÚTERÝ", "STŘEDA", "ČTVRTEK", "PÁTEK", "no-show", "NEDĚLE"};
+		return new String[]{"PONDĚLÍ", "ÚTERÝ", "STŘEDA", "ČTVRTEK", "PÁTEK", "<hr class=\"no-show\" />", "NEDĚLE"};
 	}	
 
 
 	protected String getOfferOfTheWeek(String html) {
-		int beginIndex = html.indexOf("<p", html.indexOf("CELOTÝDENNÍ NABÍDKA")); // first <p that comes after CELOTÝDENNÍ NABÍDKA
-		int endIndex = html.indexOf("</p>", beginIndex) + "</p>".length(); // up to the first </p> that comes after that
+		int beginIndex = html.toLowerCase().indexOf("CELOTÝDENNÍ NABÍDKA".toLowerCase()); // first <p that comes after CELOTÝDENNÍ NABÍDKA
+		int endIndex = html.toLowerCase().indexOf("pondělí", beginIndex); // up to the first </p> that comes after that
 		return html.substring(beginIndex, endIndex);
 	}
 	
