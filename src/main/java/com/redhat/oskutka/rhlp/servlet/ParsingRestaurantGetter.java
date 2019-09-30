@@ -105,10 +105,13 @@ public abstract class ParsingRestaurantGetter extends RestaurantGetter {
 
 	@Override
 	protected String getFreshMenuHTML() throws IOException, ParseException {
-		return parseHTML(super.getFreshMenuHTML());
+		return parseHTML(preParseHTML(super.getFreshMenuHTML()));
 	}
 	
-	
+	protected String preParseHTML(String html) {
+		return html;
+	}
+
 	/**
 	 * If true, the html is not parsed for dayOfWeek strings as a whole, but only the section [menuSectionBegin]...[menuSectionEnd]
 	 * In that case you need to override getMenuSectionBeginString and getMenuSectionEndString 

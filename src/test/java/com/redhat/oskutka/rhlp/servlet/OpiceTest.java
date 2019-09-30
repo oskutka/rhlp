@@ -8,7 +8,7 @@ public class OpiceTest extends ParsingTest {
 		// also takes weekday from here instead of the current date
 		parser = new Opice() {
 			public String getFreshMenuHTML() throws java.io.IOException, java.text.ParseException {
-				return parseHTML(readFile(getClass().getResource(getHtmlFileName()).getFile()));
+				return parseHTML(preParseHTML(readFile(getClass().getResource(getHtmlFileName()).getFile())));
 			};
 
 			public int getDayOfWeek() {

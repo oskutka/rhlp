@@ -31,7 +31,20 @@ public class Purkynka extends ParsingRestaurantGetter {
 
 	@Override
 	protected String[] getDays() {
-		return new String[]{"Pondělí", "Úterý", "Středa", "Čtvrtek", "Pátek", "Akce:", "Neděle"};
+		return new String[]{"Pondělí", "Úterý", "Středa", "Čtvrtek", "Pátek", "<hr class=\"no-show\" />", "Neděle"};
 	}
-
+	
+	/*
+	 * The html of the page is sometimes 'broken' around symbols with diacritics. 
+	 * This function fixes it at least for the days of the week. 
+	 */
+	@Override
+	protected String preParseHTML(String html) {
+		html = html.replaceAll("(?iu)Pond(<[^>]*>)*ě(<[^>]*>)*l(<[^>]*>)*í","Pondělí");
+		html = html.replaceAll("(?iu)Ú(<[^>]*>)*ter(<[^>]*>)*ý","Úterý");
+		html = html.replaceAll("(?iu)St(<[^>]*>)*ř(<[^>]*>)*eda","Středa");
+		html = html.replaceAll("(?iu)Č(<[^>]*>)*tvrtek","Čtvrtek");
+		html = html.replaceAll("(?iu)P(<[^>]*>)*á(<[^>]*>)*tek","Pátek");
+		return super.preParseHTML(html);
+	}
 }

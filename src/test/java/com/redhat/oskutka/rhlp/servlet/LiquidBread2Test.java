@@ -8,7 +8,7 @@ public class LiquidBread2Test extends ParsingTest {
 		// also takes weekday from here instead of the current date
 		parser = new LiquidBread() {
 			public String getFreshMenuHTML() throws java.io.IOException, java.text.ParseException {
-				return parseHTML(readFile(getClass().getResource(getHtmlFileName()).getFile()));
+				return parseHTML(preParseHTML(readFile(getClass().getResource(getHtmlFileName()).getFile())));
 			};
 
 			public int getDayOfWeek() {
