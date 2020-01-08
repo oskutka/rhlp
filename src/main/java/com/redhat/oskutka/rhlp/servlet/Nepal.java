@@ -27,7 +27,7 @@ public class Nepal extends ParsingRestaurantGetter {
 	
 	@Override
 	protected String[] getDays() {
-		return new String[]{"Monday--", "Tuesday--", "Wednesday--", "Thursday--", "Friday--", "alergeny", "Sunday"};
+		return new String[]{"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "alergeny", "Sunday"};
 	}
 
 }
