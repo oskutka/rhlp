@@ -33,7 +33,6 @@ var restaurants = [
 	["opice", "U 3 Opic", "Opice"],
 	["sporthotel", "A-Sport Hotel", "Sporthotel"],
 	["kotelna", "U Kotelny", "Kotelna"],
-	["prometheus", "Prometheus", "Prometheus .daily-menu"],
 	["zelena_kocka", "Zelena Kocka", "ZelenaKocka #dnesni-menu"],
 	["globus", "Globus", "Globus .restaurant__menu-table-row--active .restaurant__menu-food-table "],
 	["menza", "Menza Purkyňova", "Menza #m10"],
