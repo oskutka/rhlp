@@ -83,7 +83,11 @@ public abstract class ParsingRestaurantGetter extends RestaurantGetter {
 	}
 	
 	protected int getTodayIndex(String html) {
-		return getLastIndex(html, getToday());
+		if (inCaseOfSeveralTodaysOnThePageUseTheLastOne()) {
+			return getLastIndex(html, getToday());
+		} else {
+			return getFirstIndex(html, getToday());
+		}
 	}
 	
 	protected String getTomorrow() {
@@ -92,7 +96,11 @@ public abstract class ParsingRestaurantGetter extends RestaurantGetter {
 	}
 	
 	protected int getTomorrowIndex(int beginIndex, String html) {
-		return getFirstIndex(html.substring(beginIndex), getTomorrow()) + beginIndex; 
+		if (inCaseOfSeveralTomorrowsOnThePageUseTheLastOne()) {
+			return getLastIndex(html.substring(beginIndex), getTomorrow()) + beginIndex;
+		} else {
+			return getFirstIndex(html.substring(beginIndex), getTomorrow()) + beginIndex; 
+		}
 	}
 	
 	private int getFirstIndex(String html, String substring) {
@@ -136,4 +144,13 @@ public abstract class ParsingRestaurantGetter extends RestaurantGetter {
 		return getFirstIndex(html, getMenuSectionEndString());
 	}
 	
+	protected boolean inCaseOfSeveralTodaysOnThePageUseTheLastOne() {
+		return true;
+	}
+
+	protected boolean inCaseOfSeveralTomorrowsOnThePageUseTheLastOne() {
+		return inCaseOfSeveralTodaysOnThePageUseTheLastOne();
+	}
+
+
 }

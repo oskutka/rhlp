@@ -47,4 +47,9 @@ public class Purkynka extends ParsingRestaurantGetter {
 		html = html.replaceAll("(?iu)P(<[^>]*>)*á(<[^>]*>)*tek","Pátek");
 		return super.preParseHTML(html);
 	}
+	
+	@Override
+	protected boolean inCaseOfSeveralTomorrowsOnThePageUseTheLastOne() {
+		return false;
+	}
 }

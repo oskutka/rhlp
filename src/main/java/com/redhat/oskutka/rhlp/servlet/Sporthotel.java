@@ -32,8 +32,8 @@ public class Sporthotel extends ParsingRestaurantGetter {
 	
 	/* There are several "středa" and "čtvrtek" on the page. We need to get the first ones (not the last ones). */
 	@Override
-	protected int getTodayIndex(String html) {
-		return html.toLowerCase().indexOf(getToday().toLowerCase());
+	protected boolean inCaseOfSeveralTodaysOnThePageUseTheLastOne() {
+		return false;
 	}
 
 	@Override
